@@ -9,17 +9,10 @@ namespace ConsoleApp2
     class Visitor
     {
         public bool cloth = false; // сдана ли одежда
-        private readonly Random r = new();
-        public int num;
-        public void putClothes(Wardrobe w)
+        public string name;
+        public Visitor(string name)
         {
-            cloth = true;
-            w.getClothes(this);
-        }
-        public void getClothes(Wardrobe w)
-        {
-            cloth = false;
-            w.giveClothes(this);
+            this.name = name;
         }
     }
 }

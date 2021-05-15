@@ -10,9 +10,8 @@ namespace ConsoleApp2
         static Readroom r = new();
         static void Main(string[] args)
         {
-            Visitor vis = new();
-            vis.putClothes(w);
-            r.giveBook(vis);
+            Visitor[] vis = new Visitor[100];
+            // можете вызывать любые функции
             Console.Read();
         }
     }

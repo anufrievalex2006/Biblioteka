@@ -6,17 +6,26 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    class Wardrobe : Lib
+    class Wardrobe
     {
-        private readonly Random r = new();
-        public void getClothes(Visitor v)
+        public int num = 0;
+        public int[] m = new int[100];
+        private void fillM(int[] v) // заполнение массива номерков
         {
-            if (visits.Count < 100) v.num = r.Next(0, 100);
-            else throw new Exception("больше нет мест в гардеробе.");
+            for (int i = 0; i < v.Length; i++)
+                v[i] = (i + 1);
         }
-        public void giveClothes(Visitor v)
+        public void giveNum(Visitor v)
         {
-            visits.Remove(v);
+            if (v.cloth == false && num < m.Length)
+            {
+                v.cloth = true;
+                while (!m.Contains(num))
+                    num++;
+                m = m.Where(t => t != num).ToArray();
+                Console.Write("Посетитель сдал одежду.");
+            }
+            else Console.Write("стоп, он же сдал одежду ._.");
         }
     }
 }

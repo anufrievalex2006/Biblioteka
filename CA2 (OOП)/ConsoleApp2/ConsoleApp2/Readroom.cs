@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    class Readroom : Lib
+    class Readroom
     {
+        public List<string> names = new(100);
         public void giveBook(Visitor v)
         {
             if (v.cloth == true)
             {
-                visits.Add(v);
-                isBookGiven = true;
+                try
+                {
+                    names.Add(v.name);
+                }
+                catch
+                {
+                    throw new Exception("В читательном зале нет мест.");
+                }
             }
         }
     }
